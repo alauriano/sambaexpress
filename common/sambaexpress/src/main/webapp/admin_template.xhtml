@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	<h:outputStylesheet>
+        .cols {
+        vertical-align: top;
+        }
+    </h:outputStylesheet>
+
+	<h:form style="width: 570px; ">
+		<h:panelGrid columns="2" columnClasses="cols,cols" width="1080"
+			style="width: 569px; ">
+				<h:panelGroup>
+					<rich:panelMenu style="width:180px" itemMode="ajax"
+						groupMode="ajax" groupExpandedLeftIcon="triangleUp"
+						groupCollapsedLeftIcon="triangleDown"
+						topGroupExpandedRightIcon="chevronUp"
+						topGroupCollapsedRightIcon="chevronDown" itemLeftIcon="disc"
+						itemChangeListener="#{panelMenuBean.updateCurrent}" >
+
+						<rich:panelMenuGroup label="Configuration">
+
+							<rich:panelMenuGroup label="Pays">
+								<rich:panelMenuItem label="Modifier" name="modifyCountry" action="/country.xhtml"/>
+								<rich:panelMenuItem label="Supprimer" name="deleteCountry" />
+								<rich:panelMenuItem label="Ajouter" name="addCountry" />
+							</rich:panelMenuGroup>
+
+							<rich:panelMenuGroup label="Ville">
+								<rich:panelMenuItem label="Modifier" name="modifyCity" />
+								<rich:panelMenuItem label="Supprimer" name="deleteCity" />
+								<rich:panelMenuItem label="Ajouter" name="addCity" />
+							</rich:panelMenuGroup>
+
+							<rich:panelMenuGroup label="Devise">
+								<rich:panelMenuItem label="Modifier" name="modifyCurrency" />
+								<rich:panelMenuItem label="Supprimer" name="deleteCurrency" />
+								<rich:panelMenuItem label="Ajouter" name="addCurrency" />
+							</rich:panelMenuGroup>
+
+							<rich:panelMenuGroup label="Unité de mesure">
+								<rich:panelMenuItem label="Modifier" name="modifyUnit" />
+								<rich:panelMenuItem label="Supprimer" name="deleteUnit" />
+								<rich:panelMenuItem label="Ajouter" name="addUnit" />
+							</rich:panelMenuGroup>
+
+							<rich:panelMenuGroup label="Type de transport">
+								<rich:panelMenuItem label="Modifier" name="modifyTransport" />
+								<rich:panelMenuItem label="Supprimer" name="deleteTransport" />
+								<rich:panelMenuItem label="Ajouter" name="addTransport" />
+							</rich:panelMenuGroup>
+
+							<rich:panelMenuGroup label="Status">
+								<rich:panelMenuItem label="Modifier" name="modifyStatus" />
+								<rich:panelMenuItem label="Supprimer" name="deleteStatus" />
+								<rich:panelMenuItem label="Ajouter" name="addStatus" />
+							</rich:panelMenuGroup>
+
+							<rich:panelMenuGroup label="Table de prix">
+								<rich:panelMenuItem label="Modifier" name="modifyTablePrice" />
+								<rich:panelMenuItem label="Supprimer" name="deleteTablePrice" />
+								<rich:panelMenuItem label="Ajouter" name="addTablePrice" />
+							</rich:panelMenuGroup>
+
+							<rich:panelMenuGroup label="Point de distribution">
+								<rich:panelMenuItem label="Modifier"
+									name="modifyDistributionPoint" />
+								<rich:panelMenuItem label="Supprimer"
+									name="deleteDistributionPoint" />
+								<rich:panelMenuItem label="Ajouter" name="addDistributionPoint" />
+							</rich:panelMenuGroup>
+
+							<rich:panelMenuGroup label="Directeur d'agence">
+								<rich:panelMenuItem label="Modifier" name="modifyAgencyInfo" />
+								<rich:panelMenuItem label="Supprimer" name="deleteAgencyInfo" />
+								<rich:panelMenuItem label="Ajouter" name="addAgencyInfo" />
+							</rich:panelMenuGroup>
+						</rich:panelMenuGroup>
+						<rich:panelMenuGroup label="Group 2">
+							<rich:panelMenuItem label="Item 2.1" name="Item_2_1" />
+							<rich:panelMenuItem label="Item 2.2" name="Item_2_2" />
+							<rich:panelMenuItem label="Item 2.3" name="Item_2_3" />
+							<rich:panelMenuGroup label="Group 2.4">
+								<rich:panelMenuItem label="Item 2.4.1" name="Item_2_4_1" />
+								<rich:panelMenuItem label="Item 2.4.2" name="Item_2_4_2" />
+								<rich:panelMenuItem label="Item 2.4.3" name="Item_2_4_3" />
+							</rich:panelMenuGroup>
+							<rich:panelMenuItem label="Item 2.5" name="Item_2_5" />
+						</rich:panelMenuGroup>
+						<rich:panelMenuGroup label="Group 3">
+							<rich:panelMenuItem label="Item 3.1" name="Item_3_1" />
+							<rich:panelMenuItem label="Item 3.2" name="Item_3_2" />
+							<rich:panelMenuItem label="Item 3.3" name="Item_3_3" />
+						</rich:panelMenuGroup>
+					</rich:panelMenu>
+				</h:panelGroup>
+				
+		<!-- 
+			<h:panelGroup style="width: 642px;" id="test">
+				<a4j:outputPanel ajaxRendered="true" layout="block">
+					<rich:panel rendered="#{panelMenuBean.current == 'modifyCountry'}" >
+								<ui:include src="country.xhtml" />
+					</rich:panel>
+				</a4j:outputPanel>
+			</h:panelGroup>  -->
+	</h:panelGrid>
+			</h:form>	
+</ui:composition>

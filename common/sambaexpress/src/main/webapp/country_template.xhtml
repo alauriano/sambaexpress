@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:b="http://richfaces.org/sandbox/bootstrap">
+
+	<h:outputStylesheet>
+        a.no-decor>img {
+        border: none;
+        }
+        .atop {
+        vertical-align: top;
+        }
+          .cols {
+        vertical-align: top;
+        }
+    </h:outputStylesheet>
+
+	<rich:panel>
+		<h:panelGroup>
+			<table width="100%">
+				<tbody>
+					<tr>
+						<td><h2>SAMBA EXPRESS</h2></td>
+						<td align="right"><h:outputLink
+								value="http://labs.jboss.com/portal/jbossrichfaces/downloads">Accueil</h:outputLink>&#160;
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</h:panelGroup>
+	</rich:panel>
+
+	<a4j:status onstart="#{rich:component('statPane')}.show();"
+		onstop="#{rich:component('statPane')}.hide();" />
+	<center>
+		<h:panelGrid width="80%">
+			<h:form>
+				<!-- country code -->
+				<rich:dataTable value="#{countryBeanAction.allCountries}"
+					var="country" iterationStatusVar="it" id="table" rows="15"
+					style="width:600px">
+
+					<f:facet name="header">
+						<a4j:commandLink render="addGrid" execute="@this"
+							oncomplete="#{rich:component('addPane')}.show();">
+							<h:graphicImage value="/resources/images/icons/edit.gif"
+								alt="add" />
+						</a4j:commandLink>
+					</f:facet>
+					
+					<rich:column>
+						<f:facet name="header">#</f:facet>
+                #{it.index}
+            </rich:column>
+					<rich:column>
+						<f:facet name="header">Code</f:facet>
+						<h:outputText value="#{country.code}" />
+					</rich:column>
+					<rich:column>
+						<f:facet name="header">Description</f:facet>
+						<h:outputText value="#{country.description}" />
+					</rich:column>
+					<rich:column>
+						<a4j:commandLink execute="@this" render="@none"
+							oncomplete="#{rich:component('confirmPane')}.show();">
+							<a4j:param value="#{it.index}"
+								assignTo="#{countryBeanAction.selectedRow}" />
+							<h:graphicImage value="/resources/images/icons/delete.gif"
+								alt="delete" />
+						</a4j:commandLink>
+						<a4j:commandLink render="editGrid" execute="@this"
+							oncomplete="#{rich:component('editPane')}.show();">
+							<h:graphicImage value="/resources/images/icons/edit.gif"
+								alt="edit" />
+								<a4j:param value="#{it.index}"
+								assignTo="#{countryBeanAction.selectedRow}" />
+							<f:setPropertyActionListener
+								target="#{countryBeanAction.countryBean}" value="#{country}" />
+							
+						</a4j:commandLink>
+					</rich:column>
+					<f:facet name="footer">
+						<rich:dataScroller page="#{countryBeanAction.page}" />
+					</f:facet>
+				</rich:dataTable>
+
+
+
+				<a4j:jsFunction name="remove"
+					action="#{countryBeanAction.deleteCountry}" render="table"
+					execute="@this"
+					oncomplete="#{rich:component('confirmPane')}.hide();" />
+
+
+				<rich:popupPanel id="statPane" autosized="true">
+					<h:graphicImage value="/images/ai.gif" alt="ai" />
+            Please wait...
+        </rich:popupPanel>
+
+				<!-- confirmation pane  -->
+				<rich:popupPanel id="confirmPane" autosized="true" modal="true">
+            Are you sure you want to delete the row?
+            <a4j:commandButton value="Cancel"
+						onclick="#{rich:component('confirmPane')}.hide();" />
+					<a4j:commandButton value="Delete" onclick="remove(); return false;" />
+				</rich:popupPanel>
+
+				<!--  modify country -->
+				<rich:popupPanel header="Edit Country Details" id="editPane"
+					domElementAttachment="parent" width="300" height="100" modal="true">
+					<h:panelGrid columns="3" id="editGrid">
+						<h:outputText value="Code" />
+						<h:inputText value="#{countryBeanAction.countryBean.code}" />
+						<h:panelGroup />
+
+						<h:outputText value="Description" />
+						<h:inputText value="#{countryBeanAction.countryBean.description}" />
+						<h:panelGroup />
+					</h:panelGrid>
+
+					<a4j:commandButton value="Modifier"
+						action="#{countryBeanAction.modifyCountry}" render="table"
+						execute="editPane"
+						oncomplete="if (#{facesContext.maximumSeverity==null}) { #{rich:component('editPane')}.hide();}">
+						
+					</a4j:commandButton>
+					<a4j:commandButton value="Annuler"
+						onclick=" #{rich:component('editPane')}.hide();" />
+				</rich:popupPanel>
+
+				<!--  add country -->
+				<rich:popupPanel header="Add Country Details" id="addPane"
+					domElementAttachment="parent" width="300" height="100" modal="true">
+					<h:panelGrid columns="3" id="addGrid">
+						<h:outputText value="Code" />
+						<h:inputText value="#{countryBeanAction.countryBean.code}" />
+						<h:panelGroup />
+
+						<h:outputText value="Description" />
+						<h:inputText value="#{countryBeanAction.countryBean.description}" />
+						<h:panelGroup />
+					</h:panelGrid>
+
+					<a4j:commandButton value="Ajoutez"
+						action="#{countryBeanAction.addCountry}" render="table"
+						execute="addPane"
+						oncomplete="if (#{facesContext.maximumSeverity==null}) { #{rich:component('addPane')}.hide();}" />
+
+					<a4j:commandButton value="Annuler"
+						onclick=" #{rich:component('addPane')}.hide();" />
+				</rich:popupPanel>
+
+			</h:form>
+		</h:panelGrid>
+	</center>
+
+	<rich:panel>
+		<h:outputText
+			value="Copyright (c) 2013 Samba express All rights reserved." />
+	</rich:panel>
+</ui:composition>

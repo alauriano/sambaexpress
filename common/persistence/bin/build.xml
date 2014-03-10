@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="persistence">
+    <!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+    <property environment="env"/>
+    <property name="file.encoding" value="US-ASCII"/>
+    <property name="ECLIPSE_HOME" value="../../../../Documents/eclipse"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.5"/>
+    <property name="source" value="1.5"/>
+    <path id="Maven Dependencies.libraryclasspath">
+        <pathelement location="../../../../.m2/repository/org/hibernate/hibernate-entitymanager/4.2.3.Final/hibernate-entitymanager-4.2.3.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/logging/jboss-logging/3.1.0.GA/jboss-logging-3.1.0.GA.jar"/>
+        <pathelement location="../../../../.m2/repository/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/spec/javax/transaction/jboss-transaction-api_1.1_spec/1.0.1.Final/jboss-transaction-api_1.1_spec-1.0.1.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.1.Final/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/hibernate/common/hibernate-commons-annotations/4.0.2.Final/hibernate-commons-annotations-4.0.2.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/javassist/javassist/3.15.0-GA/javassist-3.15.0-GA.jar"/>
+        <pathelement location="../../../../.m2/repository/org/hibernate/hibernate-core/4.2.3.Final/hibernate-core-4.2.3.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/antlr/antlr/2.7.7/antlr-2.7.7.jar"/>
+        <pathelement location="../../../../.m2/repository/mysql/mysql-connector-java/5.1.25/mysql-connector-java-5.1.25.jar"/>
+        <pathelement location="../../../../.m2/repository/org/hibernate/hibernate-validator/5.0.1.Final/hibernate-validator-5.0.1.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/com/fasterxml/classmate/0.8.0/classmate-0.8.0.jar"/>
+        <pathelement location="../../../../.m2/repository/org/hibernate/hibernate-search/4.3.0.Final/hibernate-search-4.3.0.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/hibernate/hibernate-search-orm/4.3.0.Final/hibernate-search-orm-4.3.0.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/hibernate/hibernate-search-engine/4.3.0.Final/hibernate-search-engine-4.3.0.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/lucene/lucene-core/3.6.2/lucene-core-3.6.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/avro/avro/1.6.3/avro-1.6.3.jar"/>
+        <pathelement location="../../../../.m2/repository/org/codehaus/jackson/jackson-core-asl/1.8.8/jackson-core-asl-1.8.8.jar"/>
+        <pathelement location="../../../../.m2/repository/org/codehaus/jackson/jackson-mapper-asl/1.8.8/jackson-mapper-asl-1.8.8.jar"/>
+        <pathelement location="../../../../.m2/repository/com/thoughtworks/paranamer/paranamer/2.3/paranamer-2.3.jar"/>
+        <pathelement location="../../../../.m2/repository/org/xerial/snappy/snappy-java/1.0.4.1/snappy-java-1.0.4.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/lucene/lucene-facet/3.6.2/lucene-facet-3.6.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/hibernate/hibernate-search-analyzers/4.3.0.Final/hibernate-search-analyzers-4.3.0.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/lucene/lucene-analyzers/3.6.2/lucene-analyzers-3.6.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/solr/solr-analysis-extras/3.6.2/solr-analysis-extras-3.6.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/solr/solr-core/3.6.2/solr-core-3.6.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/solr/solr-solrj/3.6.2/solr-solrj-3.6.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/lucene/lucene-highlighter/3.6.2/lucene-highlighter-3.6.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/lucene/lucene-kuromoji/3.6.2/lucene-kuromoji-3.6.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/lucene/lucene-memory/3.6.2/lucene-memory-3.6.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/lucene/lucene-misc/3.6.2/lucene-misc-3.6.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/lucene/lucene-phonetic/3.6.2/lucene-phonetic-3.6.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/lucene/lucene-spatial/3.6.2/lucene-spatial-3.6.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/lucene/lucene-spellchecker/3.6.2/lucene-spellchecker-3.6.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/lucene/lucene-grouping/3.6.2/lucene-grouping-3.6.2.jar"/>
+        <pathelement location="../../../../.m2/repository/commons-codec/commons-codec/1.6/commons-codec-1.6.jar"/>
+        <pathelement location="../../../../.m2/repository/commons-io/commons-io/2.1/commons-io-2.1.jar"/>
+        <pathelement location="../../../../.m2/repository/commons-lang/commons-lang/2.6/commons-lang-2.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/lucene/lucene-smartcn/3.6.2/lucene-smartcn-3.6.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/lucene/lucene-stempel/3.6.2/lucene-stempel-3.6.2.jar"/>
+        <pathelement location="../../../../.m2/repository/javax/persistence/persistence-api/1.0.2/persistence-api-1.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/junit/junit/3.8.1/junit-3.8.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar"/>
+        <pathelement location="../../../../.m2/repository/org/slf4j/slf4j-log4j12/1.7.5/slf4j-log4j12-1.7.5.jar"/>
+        <pathelement location="../../../../.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17.jar"/>
+        <pathelement location="../../../../.m2/repository/org/slf4j/slf4j-nop/1.7.5/slf4j-nop-1.7.5.jar"/>
+        <pathelement location="../../../../.m2/repository/javax/javaee-api/6.0/javaee-api-6.0.jar"/>
+    </path>
+    <path id="persistence.classpath">
+        <pathelement location="target/classes"/>
+        <pathelement location="target/test-classes"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="target/classes"/>
+        <mkdir dir="target/test-classes"/>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src/main/java">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/test-classes">
+            <fileset dir="src/test/java">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src/main/resources">
+                <include name="**/*.java"/>
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="target/classes"/>
+        <delete dir="target/test-classes"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" encoding="${file.encoding}" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/main/java"/>
+            <src path="src/main/resources"/>
+            <include name="**/*.java"/>
+            <classpath refid="persistence.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/test-classes" encoding="${file.encoding}" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/test/java"/>
+            <classpath refid="persistence.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+</project>
